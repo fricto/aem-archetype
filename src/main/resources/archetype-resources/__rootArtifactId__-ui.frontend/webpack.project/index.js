@@ -33,7 +33,6 @@ const WEBPACK = {
    */
   entry: {
     components: path.resolve(__dirname, './entries/components.js'),
-    // 'other-components': path.resolve(__dirname, './entries/other-components.js'),
   },
 };
 

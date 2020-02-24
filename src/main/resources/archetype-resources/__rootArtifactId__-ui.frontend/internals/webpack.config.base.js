@@ -8,7 +8,7 @@
 const webpack = require('webpack');
 const path = require('path');
 
-const CONFIG = require('./../../webpack.project');
+const CONFIG = require('../webpack.project');
 
 // Webpack v4: `MiniCssExtractPlugin` replaces `ExtractTextPlugin` and is specific to CSS
 // https://github.com/webpack-contrib/mini-css-extract-plugin

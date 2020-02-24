@@ -174,3 +174,7 @@ nbdist/
 nbactions.xml
 nb-configuration.xml
 .nb-gradle/
+
+# Node
+ui.frontend/node_modules/
+ui.frontend/node/

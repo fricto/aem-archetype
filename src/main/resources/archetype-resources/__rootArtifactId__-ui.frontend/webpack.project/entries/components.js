@@ -1,3 +1,4 @@
+#set( $symbol_escape = '$' )
 /**
  * Uncomment the following line to include Babel's polyfill.
  * Note that this increases the size of the bundled JavaScript file.
@@ -16,5 +17,5 @@ function importAll(r) {
   });
 }
 
-// Include all files named "index.js" in a "webpack.modules/" folder.
-importAll(require.context('./../../content/jcr_root/', true, /\/webpack\.module\/index\.js$/));
+// Include all files named "index.js" in a "webpack.module/" folder.
+importAll(require.context('../../../${rootArtifactId}-ui.apps/src/main/content/jcr_root/', true, /\/webpack\.module\/index\.js$/));

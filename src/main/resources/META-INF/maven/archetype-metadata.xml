@@ -7,11 +7,22 @@
         <requiredProperty key="clientPrettyName"/>
     </requiredProperties>
     <fileSets>
-        <fileSet encoding="UTF-8">
+        <fileSet filtered="true" encoding="UTF-8">
             <directory></directory>
             <includes>
-                <include>.gitignore</include>
+                <include>.babelrc</include>
                 <include>.gitattributes</include>
+                <include>.gitignore</include>
+                <include>.npmrc</include>
+                <include>package-lock.json</include>
+                <include>package.json</include>
+                <include>README.md</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>__rootArtifactId__-ui.frontend</directory>
+            <includes>
+                <include>**/*.js</include>
             </includes>
         </fileSet>
     </fileSets>
@@ -40,12 +51,6 @@
         </module>
         <module id="${rootArtifactId}-ui.apps" dir="__rootArtifactId__-ui.apps" name="${rootArtifactId}-ui.apps">
             <fileSets>
-                <fileSet encoding="UTF-8">
-                    <directory>src/main/webpack.core</directory>
-                </fileSet>
-                <fileSet encoding="UTF-8">
-                    <directory>src/main/webpack.project</directory>
-                </fileSet>
                 <fileSet filtered="true" encoding="UTF-8">
                     <directory>src/main/content</directory>
                     <includes>
