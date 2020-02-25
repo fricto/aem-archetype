@@ -8,7 +8,7 @@ const path = require('path');
 const AEM = {
   projectFolderName: '__appsFolderName__',
   libraryName: 'Project_Component_Library',
-  jcrRoot: path.resolve(__dirname, '../content/jcr_root/'),
+  jcrRoot: path.resolve(__dirname, '../../clientname-ui.apps/src/main/content/jcr_root/'),
 };
 
 /**
