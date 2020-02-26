@@ -107,7 +107,12 @@ const BABEL = {
  *
  * You can override or extend JEST, but you don't have to.
  */
-const JEST = {};
+const JEST = {
+  watchPlugins: [
+    'jest-watch-typeahead/filename',
+    'jest-watch-typeahead/testname',
+  ]
+};
 
 module.exports = {
   aem: AEM,
