@@ -38,49 +38,6 @@
         </resources>
         <plugins>
             <plugin>
-                <groupId>com.github.eirslett</groupId>
-                <artifactId>frontend-maven-plugin</artifactId>
-                <version>1.6</version>
-
-                <configuration>
-                    <installDirectory>../${rootArtifactId}-ui.frontend</installDirectory>
-                    <workingDirectory>../</workingDirectory>
-                </configuration>
-
-                <executions>
-                    <execution>
-                        <id>install node and npm</id>
-                        <goals>
-                            <goal>install-node-and-npm</goal>
-                        </goals>
-                        <configuration>
-                            <nodeVersion>v10.14.2</nodeVersion>
-                        </configuration>
-                    </execution>
-
-                    <execution>
-                        <id>npm install</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>install</arguments>
-                        </configuration>
-                    </execution>
-
-                    <execution>
-                        <id>npm production</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-
-                        <configuration>
-                            <arguments>run production</arguments>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <configuration>
                     <includeEmptyDirs>true</includeEmptyDirs>

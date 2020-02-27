@@ -20,6 +20,7 @@
         <module>${rootArtifactId}-core</module>
         <module>${rootArtifactId}-ui.apps</module>
         <module>${rootArtifactId}-ui.content</module>
+        <module>${rootArtifactId}-ui.frontend</module>
     </modules>
 
     <properties>

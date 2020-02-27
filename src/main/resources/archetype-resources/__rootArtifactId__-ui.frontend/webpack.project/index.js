@@ -6,9 +6,9 @@ const path = require('path');
  * This configuration is used by different tools, such as Webpack and Jest.
  */
 const AEM = {
-  projectFolderName: '__appsFolderName__',
+  projectFolderName: '${rootArtifactId}',
   libraryName: 'Project_Component_Library',
-  jcrRoot: path.resolve(__dirname, '../../clientname-ui.apps/src/main/content/jcr_root/'),
+  jcrRoot: path.resolve(__dirname, '../../${rootArtifactId}-ui.apps/src/main/content/jcr_root/'),
 };
 
 /**

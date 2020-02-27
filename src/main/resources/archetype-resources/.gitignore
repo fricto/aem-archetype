@@ -176,5 +176,5 @@ nb-configuration.xml
 .nb-gradle/
 
 # Node
-ui.frontend/node_modules/
-ui.frontend/node/
+${rootArtifactId}-ui.frontend/node_modules/
+${rootArtifactId}-ui.frontend/node/

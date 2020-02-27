@@ -10,19 +10,9 @@
         <fileSet filtered="true" encoding="UTF-8">
             <directory></directory>
             <includes>
-                <include>.babelrc</include>
                 <include>.gitattributes</include>
                 <include>.gitignore</include>
-                <include>.npmrc</include>
-                <include>package-lock.json</include>
-                <include>package.json</include>
                 <include>README.md</include>
-            </includes>
-        </fileSet>
-        <fileSet filtered="true" encoding="UTF-8">
-            <directory>__rootArtifactId__-ui.frontend</directory>
-            <includes>
-                <include>**/*.js</include>
             </includes>
         </fileSet>
     </fileSets>
@@ -71,6 +61,19 @@
                         <include>**/*.html</include>
                         <include>**/*.xml</include>
                         <include>**/*.png</include>
+                    </includes>
+                </fileSet>
+            </fileSets>
+        </module>
+        <module id="${rootArtifactId}-ui.frontend" dir="__rootArtifactId__-ui.frontend" name="${rootArtifactId}-ui.frontend">
+            <fileSets>
+                <fileSet filtered="true" encoding="UTF-8">
+                    <directory>/</directory>
+                    <includes>
+                        <include>**/*.js</include>
+                        <include>.babelrc</include>
+                        <include>package-lock.json</include>
+                        <include>package.json</include>
                     </includes>
                 </fileSet>
             </fileSets>

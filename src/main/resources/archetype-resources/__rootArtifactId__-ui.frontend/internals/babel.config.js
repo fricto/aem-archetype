@@ -1,5 +1,5 @@
 const merge = require('merge');
-const CONFIG = require('./../../webpack.project');
+const CONFIG = require('../webpack.project');
 const path = require('path');
 
 const BABEL_DEFAULT = {
