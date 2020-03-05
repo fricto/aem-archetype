@@ -72,9 +72,14 @@
                     <includes>
                         <include>**/*.js</include>
                         <include>.babelrc</include>
-                        <include>package-lock.json</include>
                         <include>package.json</include>
                     </includes>
+                </fileSet>
+                <fileSet encoding="UTF-8">
+                    <directory>/global/js</directory>
+                </fileSet>
+                <fileSet encoding="UTF-8">
+                    <directory>/global/styles</directory>
                 </fileSet>
             </fileSets>
         </module>

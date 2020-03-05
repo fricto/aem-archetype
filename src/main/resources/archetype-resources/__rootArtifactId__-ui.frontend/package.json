@@ -1,10 +1,10 @@
 {
-  "name": "aem-webpack-example",
-  "version": "2.5.4",
+  "name": "${rootArtifactId}-frontend-build",
+  "version": "1.0.0",
   "private": true,
-  "description": "Core front end setup of a project",
+  "description": "Front-end tooling for ${clientPrettyName} AEM Project",
   "scripts": {
-    "aem:watch": "cross-env aem-front -w ../content/jcr_root -e **/webpack.module/**",
+    "aem:watch": "cross-env aem-front -w ../${rootArtifactId}-ui.apps/src/main/content/jcr_root -e **/webpack.module/**",
     "build": "cross-env webpack --config internals/webpack.config.js",
     "build:debug": "cross-env BABEL_DISABLE_CACHE=1 npm run build",
     "build:watch": "cross-env npm run build -- --watch",
@@ -16,7 +16,7 @@
     "test:watch": "cross-env npm run test -- --watchAll",
     "test:coverage": "cross-env npm run test -- --coverage"
   },
-  "author": "Infield Digital",
+  "author": "IFC Next",
   "license": "GPL-3",
   "devDependencies": {
     "aem-front": "^0.2.2",

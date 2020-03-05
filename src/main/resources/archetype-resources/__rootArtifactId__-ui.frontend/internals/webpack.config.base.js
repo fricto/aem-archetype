@@ -4,8 +4,6 @@
  * Don't touch is file if you want to stick with the standard.
  * Use the configuration file in the webpack.project folder.
  */
-
-const webpack = require('webpack');
 const path = require('path');
 
 const CONFIG = require('../webpack.project');
@@ -24,69 +22,77 @@ const WEBPACK_CONFIG_BASE = {
   name: 'base',
   mode: IS_PROD ? 'production' : 'development',
   module: {
-    rules: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      use: [{
-        loader: 'babel-loader',
-        query: require('./babel.config.js'),
-      }, {
-        loader: 'eslint-loader',
-        query: {
-          configFile: path.resolve(__dirname, './eslint.config.js'),
-          // This option makes ESLint automatically fix minor issues
-          fix: !IS_PROD,
-          formatter: function(results) {
-            if (!IS_PROD) {
-              const output = require('eslint/lib/formatters/stylish')(results);
-              // WORKAROUND because webpack-command's formatter doesn't format ESLint & Stylelint
-              // errors well. Similar to https://github.com/webpack-contrib/webpack-stylish/issues/22
-              console.log(output);
-            }
-
-            return '';
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            query: require('./babel.config.js'),
           },
-        },
-      }],
-    }, {
-      // The "?" allows you to use both file formats: .css and .scss
-      test: /\.s?css$/,
-      exclude: /node_modules/,
-      use: [
-        MiniCssExtractPlugin.loader,
-        {
-          loader: 'css-loader'
-        }, {
-          loader: 'postcss-loader',
-          query: {
-            plugins: (loader) => {
-              const plugins = [];
+          {
+            loader: 'eslint-loader',
+            query: {
+              configFile: path.resolve(__dirname, './eslint.config.js'),
+              // This option makes ESLint automatically fix minor issues
+              fix: !IS_PROD,
+              formatter: function(results) {
+                if (!IS_PROD) {
+                  const output = require('eslint/lib/formatters/stylish')(results);
+                  // WORKAROUND because webpack-command's formatter doesn't format ESLint & Stylelint
+                  // errors well. Similar to https://github.com/webpack-contrib/webpack-stylish/issues/22
+                  console.log(output);
+                }
 
-              if (!IS_PROD) {
-                plugins.push(require('stylelint')({
-                  configFile: path.resolve(__dirname, './stylelint.config.js'),
-                  fix: true,
-                }));
-
-                plugins.push(require('postcss-reporter'));
-              }
-
-              // Load Autoprefixer AFTER Stylelint to avoid failing on Stylelint's prefix rules
-              plugins.push(require('autoprefixer'));
-
-              return plugins;
+                return '';
+              },
             },
+          }
+        ],
+      },
+      {
+        // The "?" allows you to use both file formats: .css and .scss
+        test: /\.s?css$/,
+        exclude: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader'
           },
-        }, {
-          loader: 'sass-loader',
-          query: {
-            includePaths: [
-              CONFIG.aem.jcrRoot + '/apps/' + CONFIG.aem.projectFolderName + '/components/webpack.resolve/'
-            ],
-          },
-        }
-      ]
-    }]
+          {
+            loader: 'postcss-loader',
+            query: {
+              plugins: (loader) => {
+                const plugins = [];
+
+                if (!IS_PROD) {
+                  plugins.push(require('stylelint')({
+                    configFile: path.resolve(__dirname, './stylelint.config.js'),
+                    fix: true,
+                  }));
+
+                  plugins.push(require('postcss-reporter'));
+                }
+
+                // Load Autoprefixer AFTER Stylelint to avoid failing on Stylelint's prefix rules
+                plugins.push(require('autoprefixer'));
+
+                return plugins;
+              },
+            },
+          }, 
+          {
+            loader: 'sass-loader',
+            query: {
+              includePaths: [
+                CONFIG.aem.jcrRoot + '/apps/' + CONFIG.aem.projectFolderName + '/components/webpack.resolve/'
+              ],
+            },
+          }
+        ]
+      }
+    ]
   },
   output: {
     filename: '[name].bundle.js',
@@ -100,6 +106,12 @@ const WEBPACK_CONFIG_BASE = {
   ],
   resolve: {
     extensions: ['.js', '.scss'],
+    alias: {
+      Styles: path.resolve(__dirname, '../global/styles/'),
+      Global: path.resolve(__dirname, '../global/js/'),
+      Clientlibs: path.resolve(__dirname, '../../${rootArtifactId}-ui.apps/src/main/content/jcr_root/apps/${rootArtifactId}/clientlibs/'),
+      Components: path.resolve(__dirname, '../../${rootArtifactId}-ui.apps/src/main/content/jcr_root/apps/${rootArtifactId}/components/')
+    },
     modules: [
       CONFIG.aem.jcrRoot + '/apps/' + CONFIG.aem.projectFolderName + '/components/webpack.resolve/',
       NODE_MODULES,
